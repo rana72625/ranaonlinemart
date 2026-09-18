@@ -1,45 +1,26 @@
-<!DOCTYPE html><html lang="bn"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Rana- Daraz Style</title><style>body{margin:0;background:#f5f5f5;font-family:Arial}.top{background:white;padding:8px 12px;display:flex;align-items:center;gap:8px;position:sticky;top:0;z-index:10}.logo{color:#f85606;font-weight:bold;font-size:22px}.search-wrap{flex:1;display:flex;border:1px solid #f85606;border-radius:20px;overflow:hidden}.search-wrap input{flex:1;border:none;padding:9px 12px;outline:none}.search-wrap button{background:#f85606;color:white;border:none;padding:0 18px;font-weight:bold}.cat-grid{background:white;padding:12px;display:grid;grid-template-columns:repeat(5,1fr);gap:10px;text-align:center}.cat-grid div{font-size:11px}.cat-icon{width:48px;height:48px;border-radius:12px;margin:auto;display:flex;align-items:center;justify-content:center;font-size:22px;color:white;font-weight:bold}.flash{background:white;margin:10px;padding:10px;border-radius:8px}.flash-head{display:flex;justify-content:space-between;align-items:center}.flash-items{display:flex;gap:8px;overflow-x:auto;margin-top:8px}.f-card{min-width:110px;background:#fff;border:1px solid #eee;border-radius:6px;padding:6px;position:relative}.save{position:absolute;top:0;left:0;background:#ff3b30;color:white;font-size:10px;padding:3px 6px;border-radius:6px 0 6px 0}.price{color:#f85606;font-weight:bold;font-size:14px}.old{color:#999;font-size:11px;text-decoration:line-through}.stock{background:#ffe9e7;color:#f85606;font-size:10px;padding:3px;border-radius:10px;margin-top:4px;text-align:center}.prod-grid{padding:10px;display:grid;grid-template-columns:1fr 1fr;gap:8px}.p-card{background:white;border-radius:8px;overflow:hidden}.p-card img{width:100%;height:120px;object-fit:cover}.p-info{padding:6px;font-size:12px}.bottom{position:fixed;bottom:0;left:0;right:0;background:white;display:flex;justify-content:space-around;padding:6px 0;border-top:1px solid #eee}.bottom div{text-align:center;font-size:11px;color:#666}.modal{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;justify-content:center;align-items:center;z-index:20}.modal-box{background:white;width:92%;max-width:380px;padding:16px;border-radius:10px}.modal-box input{width:100%;padding:10px;margin-top:8px;border:1px solid #ddd;border-radius:6px;box-sizing:border-box}</style></head><body>
-<div class="top"><div class="logo">Rana</div><div class="search -wrap"><input id="search" placeholder="খুঁজুন"><button onclick="doSearch()">Search</button></div><a href="admin.html" style="text-decoration:none;color:#f85606;font-size:11px;font-weight:bold;margin-left:6px">Admin</a></div>
-
-<div class="cat-grid">
-<div><div class="cat-icon" style="background:#ff9f00">🎁</div>Win<br>Free Gifts</div>
-<div><div class="cat-icon" style="background:#8e44ad">📱</div>Official<br>Mobile</div>
-<div><div class="cat-icon" style="background:#f39c12">💰</div>Buy More<br>Save More</div>
-<div><div class="cat-icon" style="background:#27ae60">🚚</div>Fast<br>Delivery</div>
-<div><div class="cat-icon" style="background:#e91e63">👗</div>DarazLook</div>
-</div>
-
-<div class="flash"><div class="flash-head"><b style="color:#f85606">Flash Sale</b><span style="font-size:12px;color:#4a4aff">Shop More ></span></div><div class="flash-items" id="flash"></div></div>
-
-<div class="prod-grid" id="list"></div>
-
-<div class="bottom"><div>🏠<br>Home</div><div>☰<br>Categories</div><div onclick="Cart()">🛒<br>Cart</div><div onclick="Account()">👤<br>Account</div></div>
-
-<div id="orderModal" class="modal"><div class="modal-box"><h3 style="margin:0">অর্ডার করুন</h3><p id="pname" style="color:#f85606;font-size:13px"></p><input id="cname" placeholder="আপনার নাম *"><input id="cphone" placeholder="মোবাইল নাম্বার *"><input id="cemail" type="email" placeholder="জিমেইল দিয়ে লগইন *"><input id="caddr" placeholder="ঠিকানা"><button onclick="confirmOrder()" style="width:100%;background:#f85606;color:white;border:none;padding:11px;border-radius:6px;margin-top:10px;font-weight:bold">অর্ডার কনফার্ম</button><button onclick="document.getElementById('orderModal').style.display='none'" style="width:100%;margin-top:8px;padding:9px;background:#eee;border:none;border-radius:6px">বাতিল</button></div></div>
-
-<div id="accountModal" class="modal"><div class="modal-box"><h3>Account - জিমেইল লগইন</h3><input id="loginEmail" placeholder="আপনার জিমেইল লিখুন"><button onclick="gmailLogin()" style="width:100%;background:#f85606;color:white;border:none;padding:11px;border-radius:6px;margin-top:10px">জিমেইল দিয়ে লগইন</button><p id="loginInfo" style="font-size:12px;color:#666;margin-top:8px"></p><button onclick="document.getElementById('accountModal').style.display='none'" style="width:100%;margin-top:8px;padding:9px;background:#eee;border:none;border-radius:6px">বন্ধ</button></div></div>
-
-<script>
-let defaultPros=[
-{n:"P9 Headphone 37% SAVE",p:316,old:500,save:"37%",stock:"11 বিক্রি হয়েছে",img:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300"},
-{n:"Electric Kettle 2.0L",p:699,old:3990,save:"82%",stock:"3 Stock left",img:"https://images.unsplash.com/photo-1544787219-7f47cc556762?w=300"},
-{n:"Fan Hogo 74% SAVE",p:4499,old:17000,save:"74%",stock:"15 বিক্রি হয়েছে",img:"https://images.unsplash.com/photo-1618941714163-324a46ea2b3a?w=300"},
-{n:"Smart Watch",p:899,old:1999,save:"55%",stock:"20 বিক্রি হয়েছে",img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=300"}
-];
-let localPros=JSON.parse(localStorage.getItem('rana_products')||'[]');
-let all=[...localPros,...defaultPros];
-function render(){
-let fH='';all.slice(0,3).forEach(x=>{fH+=`<div class="f-card"><div class="save">SAVE ${x.save||'50%'}</div><img src="${x.img}" style="width:100%;height:80px;object-fit:cover;border-radius:4px"><div class="price">৳${x.p}</div><div class="old">৳${x.old||x.p*2}</div><div class="stock">${x.stock||'In Stock'}</div></div>`});
-document.getElementById('flash').innerHTML=fH;
-let h='';all.forEach((x,i)=>{h+=`<div class="p-card"><img src="${x.img}"><div class="p-info"><div style="height:32px;overflow:hidden">${x.n}</div><div class="price">৳${x.p}</div><button onclick="openOrder(${i})" style="width:100%;background:#f85606;color:white;border:none;padding:6px;border-radius:4px;margin-top:4px;font-size:11px">অর্ডার করুন</button></div></div>`});
-document.getElementById('list').innerHTML=h;
-}
-let cur=null;
-function openOrder(i){cur=all[i];document.getElementById('pname').innerText=cur.n;document.getElementById('orderModal').style.display='flex';let savedEmail=localStorage.getItem('rana_user_email');if(savedEmail)document.getElementById('cemail').value=savedEmail;}
-function confirmOrder(){let n=document.getElementById('cname').value, ph=document.getElementById('cphone').value, em=document.getElementById('cemail').value, ad=document.getElementById('caddr').value;if(!n||!ph||!em){alert('নাম, মোবাইল, জিমেইল লাগবে');return;}localStorage.setItem('rana_user_email',em);let orders=JSON.parse(localStorage.getItem('rana_orders')||'[]');orders.unshift({product:cur.n,price:cur.p,customer:n,phone:ph,email:em,address:ad,time:new Date().toLocaleString('bn-BD')});localStorage.setItem('rana_orders',JSON.stringify(orders));alert('✅ অর্ডার হয়েছে!');document.getElementById('orderModal').style.display='none';}
-function openAccount(){document.getElementById('accountModal').style.display='flex';let e=localStorage.getItem('rana_user_email');document.getElementById('loginInfo').innerText=e?`লগইন আছেন: ${e}`:'জিমেইল দিয়ে লগইন করুন';}
-function gmailLogin(){let em=document.getElementById('loginEmail').value;if(!em.includes('@')){alert('সঠিক জিমেইল দিন');return;}localStorage.setItem('rana_user_email',em);document.getElementById('loginInfo').innerText='লগইন হয়েছে: '+em;alert('জিমেইল লগইন হয়েছে!');document.getElementById('accountModal').style.display='none';}
-function doSearch(){let q=document.getElementById('search').value.toLowerCase();if(!q)return;let filtered=all.filter(x=>x.n.toLowerCase().includes(q));let h='';filtered.forEach((x,i)=>{h+=`<div class="p-card"><img src="${x.img}"><div class="p-info">${x.n}<div class="price">৳${x.p}</div><button onclick="openOrder(${i})" style="width:100%;background:#f85606;color:white;border:none;padding:6px;border-radius:4px;margin-top:4px">অর্ডার</button></div></div>`});document.getElementById('list').innerHTML=h||'<p style="padding:20px">কিছু পাওয়া যায়নি</p>';}
-function openCart(){let orders=JSON.parse(localStorage.getItem('rana_orders')||'[]');alert(orders.length?`আপনার ${orders.length} টা অর্ডার আছে Account এ দেখুন`:'কার্ট খালি');}
-render();
-</script></body></html>
+body{margin:0;background:#fff6f1;font-family:Arial}
+.top{background:linear-gradient(90deg,#f85606,#ff7a33);padding:8px 12px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:10;box-shadow:0 2px 8px rgba(248,86,6,.3)}
+.logo{color:white;font-weight:bold;font-size:22px}
+.search-wrap{flex:1;display:flex;background:white;border-radius:20px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.1)}
+.search-wrap input{flex:1;border:none;padding:9px 12px;outline:none}
+.search-wrap button{background:#f85606;color:white;border:none;padding:0 18px;font-weight:bold}
+.cat-grid{background:linear-gradient(180deg,white,#fff8f5);padding:14px 10px;display:grid;grid-template-columns:repeat(5,1fr);gap:12px;text-align:center;box-shadow:0 1px 0 #ffe9d5}
+.cat-grid div{font-size:11px;color:#333}
+.cat-icon{width:52px;height:52px;border-radius:16px;margin:auto;display:flex;align-items:center;justify-content:center;font-size:24px;color:white;font-weight:bold;box-shadow:0 2px 6px rgba(0,0,0,.15)}
+.flash{background:linear-gradient(135deg,#fff,#fff0e8);margin:10px;padding:12px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.06);border:1px solid #ffe9d5}
+.flash-head{display:flex;justify-content:space-between;align-items:center}
+.flash-items{display:flex;gap:10px;overflow-x:auto;margin-top:10px;padding-bottom:4px}
+.f-card{min-width:115px;background:white;border-radius:10px;padding:8px;position:relative;box-shadow:0 2px 6px rgba(0,0,0,.08);border:1px solid #fff0e8}
+.save{position:absolute;top:0;left:0;background:linear-gradient(90deg,#ff3b30,#ff6b30);color:white;font-size:10px;padding:4px 7px;border-radius:10px 0 10px 0;font-weight:bold}
+.price{color:#f85606;font-weight:bold;font-size:15px}
+.old{color:#999;font-size:11px;text-decoration:line-through}
+.stock{background:linear-gradient(90deg,#ff4d4d,#ff8a65);color:white;font-size:10px;padding:4px;border-radius:12px;margin-top:5px;text-align:center;font-weight:bold}
+.prod-grid{padding:10px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.p-card{background:white;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.06);border:1px solid #fff0e8}
+.p-card img{width:100%;height:130px;object-fit:cover}
+.p-info{padding:8px;font-size:12px;background:linear-gradient(180deg,white,#fffbf8)}
+.bottom{position:fixed;bottom:0;left:0;right:0;background:white;display:flex;justify-content:space-around;padding:8px 0;border-top:1px solid #ffe9d5;box-shadow:0 -2px 10px rgba(0,0,0,.05)}
+.bottom div{text-align:center;font-size:11px;color:#666}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;justify-content:center;align-items:center;z-index:20}
+.modal-box{background:white;width:92%;max-width:380px;padding:18px;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.2)}
+.modal-box input{width:100%;padding:11px;margin-top:9px;border:1px solid #ffccb0;border-radius:8px;box-sizing:border-box;background:#fff8f3}
