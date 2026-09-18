@@ -1,18 +1,19 @@
-<!DOCTYPE html>
-<html lang="bn"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Admin - Rana</title>
-<style>body{margin:0;background:#f0f2f5;font-family:Arial}#L{position:fixed;inset:0;background:#f0f2f5;display:flex;justify-content:center;align-items:center;z-index:999}#B{background:white;width:90%;max-width:360px;padding:22px;border-radius:12px;text-align:center}#B input{width:100%;padding:12px;margin-top:12px;border:1px solid #ddd;border-radius:8px;box-sizing:border-box}#B button{width:100%;padding:12px;margin-top:10px;border:none;border-radius:8px;color:white;font-weight:bold;background:#1877f2}#M{display:none;max-width:500px;margin:auto;padding:12px}.C{background:white;padding:14px;border-radius:10px}</style></head><body>
-<div id="L"><div id="B"><h2 style="color:#f57224;margin:0">Rana Mart Admin</h2><p style="font-size:12px;color:#666">শুধু মালিক - পাসওয়ার্ড দিয়ে ঢুকুন</p><input id="PW" type="password" placeholder="পাসওয়ার্ড দিন"><button onclick="login()">🔐 লগইন - Rlrs72472@</button><button onclick="location.href='index.html'" style="background:#42b72a;margin-top:8px">🏠 দোকান দেখুন (সবাই দেখে)</button></div></div>
-<div id="M"><div class="C"><h3>নতুন প্রোডাক্ট ছাড়ুন</h3><textarea id="N" placeholder="পণ্যের নাম..." style="width:100%;padding:10px;border:1px solid #ddd;border-radius:8px;min-height:60px;box-sizing:border-box"></textarea><input id="P" type="number" placeholder="দাম 850" style="width:100%;padding:12px;margin-top:8px;border:1px solid #ddd;border-radius:20px;background:#f0f2f5;box-sizing:border-box"><input type="file" id="F" accept="image/*" style="margin-top:10px"><div id="PV" style="margin-top:8px"></div><button onclick="post()" style="width:100%;padding:12px;margin-top:10px;background:#1877f2;color:white;border:none;border-radius:8px;font-weight:bold">✅ প্রোডাক্ট এড করুন</button><button onclick="location.href='index.html'" style="width:100%;padding:10px;margin-top:8px;background:#42b72a;color:white;border:none;border-radius:8px">🏠 দোকান দেখুন - সবাই দেখতে পারবে</button><button onclick="logout()" style="width:100%;padding:8px;margin-top:8px;background:#ff4444;color:white;border:none;border-radius:8px">Logout</button><div id="LS" style="margin-top:12px"></div></div></div>
+<!DOCTYPE html><html lang="bn"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Rana Online Mart - সবাই দেখবে</title><style>body{margin:0;background:#f0f2f5;font-family:Arial}.top{background:#fff;padding:10px 15px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 1px 3px rgba(0,0,0,.1);position:sticky;top:0;z-index:10}.logo{color:#f57224;font-weight:bold;font-size:20px}.admin-btn{background:#1877f2;color:white;border:none;padding:6px 12px;border-radius:6px;font-size:12px;text-decoration:none}.wrap{max-width:600px;margin:auto;padding:10px}.card{background:white;border-radius:10px;padding:10px;margin-bottom:10px;display:flex;gap:10px}.card img{width:90px;height:90px;object-fit:cover;border-radius:8px}.card b{font-size:15px}.price{color:#f57224;font-weight:bold;margin-top:4px}.order{background:#25D366;color:white;border:none;padding:8px 14px;border-radius:20px;margin-top:8px;font-weight:bold;width:100%}</style></head><body>
+<div class="top"><div class="logo">Rana Mart</div><a class="admin-btn" href="admin.html">🔐 Admin</a></div>
+<div class="wrap"><h3 style="margin:10px 5px">🛍️ আমাদের পণ্য - সবাই দেখতে পারবে</h3><div id="list"></div></div>
 <script>
-const PASS="Rlrs72472@";
-function login(){let v=document.getElementById('PW').value;if(v===PASS){localStorage.setItem('rana_admin_ok','yes');document.getElementById('L').style.display='none';document.getElementById('M').style.display='block';show();}else{alert('ভুল পাসওয়ার্ড! সঠিক: Rlrs72472@');}}
-if(localStorage.getItem('rana_admin_ok')==='yes'){document.getElementById('L').style.display='none';document.getElementById('M').style.display='block';}
-function logout(){localStorage.removeItem('rana_admin_ok');location.reload();}
-let pros=JSON.parse(localStorage.getItem('rana_products')||'[]');
-let img='';
-document.getElementById('F').addEventListener('change',e=>{let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=ev=>{img=ev.target.result;document.getElementById('PV').innerHTML='<img src="'+img+'" style="width:100%;border-radius:8px">';};r.readAsDataURL(f);});
-function post(){let n=document.getElementById('N').value;let p=document.getElementById('P').value;if(!n||!p){alert('নাম ও দাম দিন');return;}let im=img||'https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=500';pros.unshift({n:n,p:p,img:im});localStorage.setItem('rana_products',JSON.stringify(pros));alert('✅ প্রোডাক্ট এড হয়েছে! এখন দোকানে সবাই দেখতে পারবে (তোমার ফোনে)');document.getElementById('N').value='';document.getElementById('P').value='';img='';document.getElementById('PV').innerHTML='';show();}
-function show(){let h='';pros.forEach((x,i)=>{h+='<div style="display:flex;gap:8px;padding:8px;border-bottom:1px solid #eee"><img src="'+x.img+'" style="width:50px;height:50px;border-radius:6px;object-fit:cover"><div style="flex:1"><b>'+x.n+'</b><br>৳'+x.p+'</div><button onclick="del('+i+')" style="background:red;color:white;border:none;padding:4px 8px;border-radius:4px">X</button></div>';});document.getElementById('LS').innerHTML=h;}
-function del(i){pros.splice(i,1);localStorage.setItem('rana_products',JSON.stringify(pros));show();}
-show();
+let defaultProducts=[
+{n:"প্রিমিয়াম টি-শার্ট",p:550,img:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400"},
+{n:"জিন্স প্যান্ট",p:1200,img:"https://images.unsplash.com/photo-1542272604-787c3835535d?w=400"},
+{n:"চামড়ার জুতা",p:1850,img:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400"}
+];
+let localPros=JSON.parse(localStorage.getItem('rana_products')||'[]');
+let all=[...localPros,...defaultProducts];
+let box=document.getElementById('list');
+let h='';
+all.forEach(x=>{
+h+=`<div class="card"><img src="${x.img}"><div style="flex:1"><b>${x.n}</b><div class="price">৳ ${x.p}</div><button class="order" onclick="order('${x.n}','${x.p}')">📱 অর্ডার করুন</button></div></div>`;
+});
+box.innerHTML=h;
+function order(n,p){let msg=`আসসালামু আলাইকুম! আমি ${n} (৳${p}) অর্ডার করতে চাই - Rana Mart`;window.open(`https://wa.me/8801XXXXXXXXX?text=${encodeURIComponent(msg)}`,'_blank');}
 </script></body></html>
