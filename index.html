@@ -1,26 +1,29 @@
-body{margin:0;background:#fff6f1;font-family:Arial}
-.top{background:linear-gradient(90deg,#f85606,#ff7a33);padding:8px 12px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:10;box-shadow:0 2px 8px rgba(248,86,6,.3)}
-.logo{color:white;font-weight:bold;font-size:22px}
-.search-wrap{flex:1;display:flex;background:white;border-radius:20px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.1)}
-.search-wrap input{flex:1;border:none;padding:9px 12px;outline:none}
-.search-wrap button{background:#f85606;color:white;border:none;padding:0 18px;font-weight:bold}
-.cat-grid{background:linear-gradient(180deg,white,#fff8f5);padding:14px 10px;display:grid;grid-template-columns:repeat(5,1fr);gap:12px;text-align:center;box-shadow:0 1px 0 #ffe9d5}
-.cat-grid div{font-size:11px;color:#333}
-.cat-icon{width:52px;height:52px;border-radius:16px;margin:auto;display:flex;align-items:center;justify-content:center;font-size:24px;color:white;font-weight:bold;box-shadow:0 2px 6px rgba(0,0,0,.15)}
-.flash{background:linear-gradient(135deg,#fff,#fff0e8);margin:10px;padding:12px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.06);border:1px solid #ffe9d5}
-.flash-head{display:flex;justify-content:space-between;align-items:center}
-.flash-items{display:flex;gap:10px;overflow-x:auto;margin-top:10px;padding-bottom:4px}
-.f-card{min-width:115px;background:white;border-radius:10px;padding:8px;position:relative;box-shadow:0 2px 6px rgba(0,0,0,.08);border:1px solid #fff0e8}
-.save{position:absolute;top:0;left:0;background:linear-gradient(90deg,#ff3b30,#ff6b30);color:white;font-size:10px;padding:4px 7px;border-radius:10px 0 10px 0;font-weight:bold}
-.price{color:#f85606;font-weight:bold;font-size:15px}
-.old{color:#999;font-size:11px;text-decoration:line-through}
-.stock{background:linear-gradient(90deg,#ff4d4d,#ff8a65);color:white;font-size:10px;padding:4px;border-radius:12px;margin-top:5px;text-align:center;font-weight:bold}
-.prod-grid{padding:10px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.p-card{background:white;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.06);border:1px solid #fff0e8}
-.p-card img{width:100%;height:130px;object-fit:cover}
-.p-info{padding:8px;font-size:12px;background:linear-gradient(180deg,white,#fffbf8)}
-.bottom{position:fixed;bottom:0;left:0;right:0;background:white;display:flex;justify-content:space-around;padding:8px 0;border-top:1px solid #ffe9d5;box-shadow:0 -2px 10px rgba(0,0,0,.05)}
-.bottom div{text-align:center;font-size:11px;color:#666}
+<!DOCTYPE html><html lang="bn"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Rana Online Mart - Daraz Style</title><style>
+body{margin:0;background:linear-gradient(180deg,#fff6f1,#ffffff);font-family:Arial}
+.header{background:linear-gradient(90deg,#f57224,#ff8c3f);padding:10px 14px;color:white;position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 10px rgba(245,114,36,.4)}
+.header .left{display:flex;align-items:center;gap:8px}
+.header .left img{width:36px;height:36px;border-radius:8px;background:white;padding:2px}
+.header b{font-size:17px;line-height:1.1}
+.admin-link{background:white;color:#f57224;padding:6px 12px;border-radius:20px;font-size:11px;text-decoration:none;font-weight:bold;box-shadow:0 1px 4px rgba(0,0,0,.15)}
+.wrap{max-width:600px;margin:auto;padding:12px}
+.card{background:linear-gradient(180deg,white,#fffaf6);border-radius:12px;padding:12px;margin-bottom:12px;display:flex;gap:12px;box-shadow:0 2px 10px rgba(0,0,0,.06);border:1px solid #ffe9d5}
+.card img{width:95px;height:95px;object-fit:cover;border-radius:10px}
+.price{color:#f57224;font-weight:bold;font-size:16px;margin-top:4px}
+.btn{width:100%;background:linear-gradient(90deg,#f57224,#ff7a33);color:white;border:none;padding:10px;border-radius:8px;margin-top:8px;font-weight:bold;box-shadow:0 2px 6px rgba(245,114,36,.3)}
+.footer{background:white;margin-top:16px;padding:18px;border-radius:12px;text-align:center;font-size:13px;color:#555;box-shadow:0 2px 10px rgba(0,0,0,.05);border:1px solid #ffe9d5}
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;justify-content:center;align-items:center;z-index:20}
-.modal-box{background:white;width:92%;max-width:380px;padding:18px;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.2)}
-.modal-box input{width:100%;padding:11px;margin-top:9px;border:1px solid #ffccb0;border-radius:8px;box-sizing:border-box;background:#fff8f3}
+.modal-box{background:white;width:92%;max-width:400px;padding:20px;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.2)}
+.modal-box input{width:100%;padding:12px;margin-top:9px;border:1px solid #ffccb0;border-radius:8px;box-sizing:border-box;background:#fff8f3}
+</style></head><body>
+<div class="header">
+  <div class="left"><img src="logo.png" onerror="this.style.display='none'"><b>🛒 Rana<br><span style="font-size:11px;font-weight:normal;opacity:.9">Online Mart</span></b></div>
+  <a class="admin-link" href="admin.html">Admin</a>
+</div>
+<div class="wrap"><div id="list"></div><div class="footer"><b style="color:#f57224">📞 যোগাযোগ</b><br><br>📞 01XXXXXXXXX<br>📧 rana@gmail.com<br>🔵 fb.com/ranaonlinemart<br>🔴 youtube.com/@ranaonlinemart<br><br>© Rana Online Mart</div></div>
+<div id="orderModal" class="modal"><div class="modal-box"><h3 style="margin:0;color:#f57224">📝 অর্ডার করুন</h3><p id="pname" style="font-size:13px;color:#f57224;font-weight:bold"></p><input id="cname" placeholder="আপনার নাম *"><input id="cphone" placeholder="মোবাইল নাম্বার *"><input id="cemail" placeholder="জিমেইল *"><input id="caddr" placeholder="ঠিকানা"><button onclick="confirmOrder()" class="btn" style="margin-top:14px;padding:12px">✅ অর্ডার কনফার্ম করুন</button><button onclick="document.getElementById('orderModal').style.display='none'" style="width:100%;margin-top:10px;padding:10px;background:#f5f5f5;border:none;border-radius:8px">বাতিল</button></div></div>
+<script>
+let defaultPros=[{n:"প্রিমিয়াম টি-শার্ট",p:550,img:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400"},{n:"জিন্স প্যান্ট",p:1200,img:"https://images.unsplash.com/photo-1542272604-787c3835535d?w=400"}];
+let localPros=JSON.parse(localStorage.getItem('rana_products')||'[]');
+let all=[...localPros,...defaultPros];
+let cur=null;
+function render(){let h='';all.forEach((x,i)=>{h+=`<div class="card"><img src="${x.img}"><div style="flex:1"><b>${x.n}</b><div class="price">৳ ${x.p}</div><button class="btn" onclick="openOrder(${i})">এখনই অর্ডার করুন</button></div></div>`});document.getElement
