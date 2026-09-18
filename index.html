@@ -6,27 +6,65 @@
 body{background:#f5f5f5}
 .header{background:#f57224;padding:12px;position:sticky;top:0;z-index:99}
 .logo-row{display:flex;align-items:center;gap:10px}
-.logo-row img{width:40px;height:40px;border-radius:50%;background:white;padding:2px}
-.logo{color:white;font-weight:bold;font-size:20px}
-.search{flex:1;background:white;border-radius:4px;padding:8px 12px;margin-top:8px}
-.search input{border:none;width:100%;outline:none}
-.banner{background:#fff3e0;border:1px solid #ffe0b2;margin:8px;border-radius:6px;padding:8px;text-align:center;color:#f57224;font-weight:bold;font-size:13px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:8px}
-.card{background:white;border-radius:6px;overflow:hidden}
-.card img{width:100%;height:170px;object-fit:cover}
+.logo-img{width:40px;height:40px;border-radius:50%;background:white;object-fit:cover;border:2px solid white}
+.logo{color:white;font-weight:bold;font-size:22px}
+.search{flex:1;background:white;border-radius:6px;padding:10px 12px;margin-top:8px}
+.search input{border:none;width:100%;outline:none;font-size:14px}
+.banner{background:#fff3e0;border:1px solid #ffe0b2;margin:8px;border-radius:8px;padding:10px;text-align:center;color:#d35400;font-weight:bold;font-size:13px;line-height:18px;white-space:normal}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:8px;min-height:300px}
+.card{background:white;border-radius:8px;overflow:hidden;box-shadow:0 2px 4px rgba(0,0,0,.1)}
+.card img{width:100%;height:160px;object-fit:cover;background:#eee}
 .info{padding:8px}
-.price{color:#f57224;font-weight:bold}
-.btn{width:100%;background:#f57224;color:white;border:none;padding:8px;border-radius:4px;margin-top:6px;font-weight:bold}
-.owner{background:white;margin:8px;border-radius:8px;padding:12px;display:flex;gap:12px;align-items:center;border:1px solid #ffd8b1}
-.owner img{width:70px;height:70px;border-radius:50%;object-fit:cover;border:3px solid #f57224}
-.footer{background:white;margin-top:10px;padding:15px;text-align:center;font-size:12px;color:#666}
+.price{color:#f57224;font-weight:bold;font-size:16px}
+.btn{width:100%;background:#f57224;color:white;border:none;padding:10px;border-radius:6px;margin-top:6px;font-weight:bold}
+.owner{background:white;margin:8px;border-radius:8px;padding:12px;display:flex;gap:12px;align-items:center}
+.owner img{width:65px;height:65px;border-radius:50%;object-fit:cover;border:3px solid #f57224}
 </style></head><body>
 <div class="header">
 <div class="logo-row">
-<img src="rana.jpg" onerror="this.src='https://via.placeholder.com/40'">
+<img class="logo-img" src="rana.jpg" onerror="this.src='https://i.postimg.cc/8s2k7TgG/user.png'">
 <div class="logo">Rana Online Mart</div>
 </div>
-<div style="color:white;font-size:11px">📍 Madaripur • Trusted Seller • 01842560717</div>
-<div class="search"><input placeholder="Madaripur এ খুঁজুন..."></div>
+<div style="color:white;font-size:12px;margin-top:4px">📍 Madaripur • Trusted Seller • 01842560717</div>
+<div class="search"><input placeholder="Madaripur এ খুঁজুন... 🔍"></div>
 </div>
-<div class="banner">🚚 Madaripur এ ড
+
+<div class="banner">🚚 Madaripur এ ডেলিভারি ১০০৳ | ১০০০৳+ অর্ডারে ফ্রি ডেলিভারি<br>📧 khanonlineb@gmail.com | bKash: 01842560717</div>
+
+<div class="owner">
+<img src="rana.jpg" onerror="this.src='https://i.postimg.cc/8s2k7TgG/user.png'">
+<div>
+<div style="font-weight:bold;font-size:14px">আমি রানা - মাদারীপুরের ছেলে</div>
+<div style="font-size:12px;margin-top:4px;color:#666">✅ বিশ্বস্ত • ✅ খাঁটি পণ্য • ✅ দ্রুত ডেলিভারি</div>
+<div style="font-size:11px;color:#f57224;margin-top:4px">khanonlineb@gmail.com</div>
+</div>
+</div>
+
+<div class="grid" id="products"></div>
+
+<script>
+// FIX: যদি localStorage খালি থাকে তাহলে ডিফল্ট প্রোডাক্ট দেখাবে
+let saved = localStorage.getItem('rana_products');
+let products;
+if(!saved || JSON.parse(saved).length===0){
+products=[
+{n:'পাটের টোট ব্যাগ - হাতে তৈরি',p:850,img:'https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=400'},
+{n:'সুন্দরবনের খাঁটি মধু 500g',p:600,img:'https://images.unsplash.com/photo-1587049352851-8d4e89133924?w=400'},
+{n:'নকশী কাঁথা - মাদারীপুর',p:2500,img:'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=400'},
+{n:'হস্তশিল্পের ঝুড়ি',p:450,img:'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=400'}
+];
+localStorage.setItem('rana_products', JSON.stringify(products));
+} else {
+products = JSON.parse(saved);
+}
+
+let grid=document.getElementById('products');
+function render(){
+grid.innerHTML='';
+products.forEach(pr=>{
+grid.innerHTML+=`<div class="card"><img src="${pr.img}"><div class="info"><div style="font-size:13px;height:32px;overflow:hidden">${pr.n}</div><div class="price">৳${pr.p}</div><button class="btn" onclick="order('${pr.n}')">এখনই কিনুন</button></div></div>`;
+});
+}
+function order(name){window.open(`https://wa.me/8801842560717?text=${encodeURIComponent('ভাই '+name+' নিতে চাই Madaripur এ - khanonlineb@gmail.com')}`);}
+render();
+</script></body></html>
