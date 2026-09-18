@@ -1,50 +1,18 @@
-<!DOCTYPE html><html lang="bn"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Admin</title><style>body{margin:0;background:#f0f2f5;font-family:Arial}#login{position:fixed;inset:0;background:#f0f2f5;display:flex;justify-content:center;align-items:center}#box{background:white;width:90%;max-width:350px;padding:22px;border-radius:12px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.1)}#box input{width:100%;padding:12px;margin-top:12px;border:1px solid #ddd;border-radius:8px;box-sizing:border-box}#box button{width:100%;padding:12px;margin-top:10px;border:none;border-radius:8px;color:white;font-weight:bold;cursor:pointer}.main{display:none;max-width:500px;margin:auto;padding:15px}.card{background:white;padding:15px;border-radius:10px}</style></head><body>
-<div id="login"><div id="box"><h2 style="color:#f57224">Rana Mart Admin</h2><p style="font-size:12px;color:#666">শুধু মালিক ঢুকতে পারবে</p><input id="pass" type="text" placeholder="পাসওয়ার্ড দিন"><button onclick="checkLogin()" style="background:#1877f2">🔐 লগইন করুন</button><p style="font-size:11px;color:#999;margin-top:10px">পাসওয়ার্ড: Rlrs72472@</p><button onclick="location.href='index.html'" style="background:#42b72a;margin-top:8px">🏠 দোকান</button></div></div>
-<div id="main" class="main"><div class="card"><h3>📝 পণ্য পোস্ট করুন</h3><textarea id="pName" placeholder="পণ্যের নাম লিখুন..." style="width:100%;padding:10px;margin-top:10px;border:1px solid #ddd;border-radius:8px;min-height:60px;box-sizing:border-box"></textarea><input id="pPrice" type="number" placeholder="দাম: 850" style="width:100%;padding:12px;margin-top:8px;border:1px solid #ddd;border-radius:20px;background:#f0f2f5;box-sizing:border-box"><input type="file" id="file" accept="image/*" style="margin-top:10px"><div id="prev" style="margin-top:10px"></div><button onclick="doPost()" style="width:100%;background:#1877f2;color:white;border:none;padding:12px;border-radius:8px;margin-top:10px;font-weight:bold">✅ পোস্ট করুন</button><button onclick="location.href='index.html'" style="width:100%;background:#42b72a;color:white;border:none;padding:10px;border-radius:8px;margin-top:8px">দোকান দেখুন</button><button onclick="doLogout()" style="width:100%;background:#ff4444;color:white;border:none;padding:8px;border-radius:8px;margin-top:8px">Logout</button><div id="list" style="margin-top:15px"></div></div></div>
+<!DOCTYPE html>
+<html lang="bn"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Admin - Rana</title>
+<style>body{margin:0;background:#f0f2f5;font-family:Arial}#L{position:fixed;inset:0;background:#f0f2f5;display:flex;justify-content:center;align-items:center;z-index:999}#B{background:white;width:90%;max-width:360px;padding:22px;border-radius:12px;text-align:center}#B input{width:100%;padding:12px;margin-top:12px;border:1px solid #ddd;border-radius:8px;box-sizing:border-box}#B button{width:100%;padding:12px;margin-top:10px;border:none;border-radius:8px;color:white;font-weight:bold;background:#1877f2}#M{display:none;max-width:500px;margin:auto;padding:12px}.C{background:white;padding:14px;border-radius:10px}</style></head><body>
+<div id="L"><div id="B"><h2 style="color:#f57224;margin:0">Rana Mart Admin</h2><p style="font-size:12px;color:#666">শুধু মালিক - পাসওয়ার্ড দিয়ে ঢুকুন</p><input id="PW" type="password" placeholder="পাসওয়ার্ড দিন"><button onclick="login()">🔐 লগইন - Rlrs72472@</button><button onclick="location.href='index.html'" style="background:#42b72a;margin-top:8px">🏠 দোকান দেখুন (সবাই দেখে)</button></div></div>
+<div id="M"><div class="C"><h3>নতুন প্রোডাক্ট ছাড়ুন</h3><textarea id="N" placeholder="পণ্যের নাম..." style="width:100%;padding:10px;border:1px solid #ddd;border-radius:8px;min-height:60px;box-sizing:border-box"></textarea><input id="P" type="number" placeholder="দাম 850" style="width:100%;padding:12px;margin-top:8px;border:1px solid #ddd;border-radius:20px;background:#f0f2f5;box-sizing:border-box"><input type="file" id="F" accept="image/*" style="margin-top:10px"><div id="PV" style="margin-top:8px"></div><button onclick="post()" style="width:100%;padding:12px;margin-top:10px;background:#1877f2;color:white;border:none;border-radius:8px;font-weight:bold">✅ প্রোডাক্ট এড করুন</button><button onclick="location.href='index.html'" style="width:100%;padding:10px;margin-top:8px;background:#42b72a;color:white;border:none;border-radius:8px">🏠 দোকান দেখুন - সবাই দেখতে পারবে</button><button onclick="logout()" style="width:100%;padding:8px;margin-top:8px;background:#ff4444;color:white;border:none;border-radius:8px">Logout</button><div id="LS" style="margin-top:12px"></div></div></div>
 <script>
-var MY_PASS="Rlrs72472@";
-function checkLogin(){
-var v=document.getElementById('pass').value;
-if(v===MY_PASS){
-localStorage.setItem('rana_admin','yes');
-document.getElementById('login').style.display='none';
-document.getElementById('main').style.display='block';
-loadList();
-}else{
-alert('ভুল পাসওয়ার্ড! সঠিক পাসওয়ার্ড: '+MY_PASS);
-}
-}
-if(localStorage.getItem('rana_admin')==='yes'){
-document.getElementById('login').style.display='none';
-document.getElementById('main').style.display='block';
-}
-function doLogout(){localStorage.removeItem('rana_admin');location.reload();}
-var products=JSON.parse(localStorage.getItem('rana_products')||'[]');
-var imgData='';
-document.getElementById('file').addEventListener('change',function(e){
-var f=e.target.files[0];if(!f)return;
-var r=new FileReader();
-r.onload=function(ev){imgData=ev.target.result;document.getElementById('prev').innerHTML='<img src="'+imgData+'" style="width:100%;border-radius:8px">';};
-r.readAsDataURL(f);
-});
-function doPost(){
-var n=document.getElementById('pName').value;
-var p=document.getElementById('pPrice').value;
-if(!n||!p){alert('নাম ও দাম দিন');return;}
-var im=imgData||'https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=500';
-products.unshift({n:n,p:p,img:im});
-localStorage.setItem('rana_products',JSON.stringify(products));
-alert('পোস্ট হয়েছে ভাই! ✅');
-document.getElementById('pName').value='';document.getElementById('pPrice').value='';imgData='';document.getElementById('prev').innerHTML='';
-loadList();
-}
-function loadList(){
-var h='';
-for(var i=0;i<products.length;i++){
-h+='<div style="display:flex;gap:8px;padding:8px;border-bottom:1px solid #eee"><img src="'+products[i].img+'" style="width:50px;height:50px;border-radius:6px;object-fit:cover"><div style="flex:1"><b>'+products[i].n+'</b><br>৳'+products[i].p+'</div><button onclick="delPro('+i+')" style="background:red;color:white;border:none;padding:4px 8px;border-radius:4px">X</button></div>';
-}
-document.getElementById('list').innerHTML=h;
-}
-function delPro(i){products.splice(i,1);localStorage.setItem('rana_products',JSON.stringify(products));loadList();}
-if(localStorage.getItem('rana_admin')==='yes'){loadList();}
+const PASS="Rlrs72472@";
+function login(){let v=document.getElementById('PW').value;if(v===PASS){localStorage.setItem('rana_admin_ok','yes');document.getElementById('L').style.display='none';document.getElementById('M').style.display='block';show();}else{alert('ভুল পাসওয়ার্ড! সঠিক: Rlrs72472@');}}
+if(localStorage.getItem('rana_admin_ok')==='yes'){document.getElementById('L').style.display='none';document.getElementById('M').style.display='block';}
+function logout(){localStorage.removeItem('rana_admin_ok');location.reload();}
+let pros=JSON.parse(localStorage.getItem('rana_products')||'[]');
+let img='';
+document.getElementById('F').addEventListener('change',e=>{let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=ev=>{img=ev.target.result;document.getElementById('PV').innerHTML='<img src="'+img+'" style="width:100%;border-radius:8px">';};r.readAsDataURL(f);});
+function post(){let n=document.getElementById('N').value;let p=document.getElementById('P').value;if(!n||!p){alert('নাম ও দাম দিন');return;}let im=img||'https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=500';pros.unshift({n:n,p:p,img:im});localStorage.setItem('rana_products',JSON.stringify(pros));alert('✅ প্রোডাক্ট এড হয়েছে! এখন দোকানে সবাই দেখতে পারবে (তোমার ফোনে)');document.getElementById('N').value='';document.getElementById('P').value='';img='';document.getElementById('PV').innerHTML='';show();}
+function show(){let h='';pros.forEach((x,i)=>{h+='<div style="display:flex;gap:8px;padding:8px;border-bottom:1px solid #eee"><img src="'+x.img+'" style="width:50px;height:50px;border-radius:6px;object-fit:cover"><div style="flex:1"><b>'+x.n+'</b><br>৳'+x.p+'</div><button onclick="del('+i+')" style="background:red;color:white;border:none;padding:4px 8px;border-radius:4px">X</button></div>';});document.getElementById('LS').innerHTML=h;}
+function del(i){pros.splice(i,1);localStorage.setItem('rana_products',JSON.stringify(pros));show();}
+show();
 </script></body></html>
