@@ -1,70 +1,91 @@
 <!DOCTYPE html>
-<html lang="bn"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rana Online Mart - Madaripur</title>
+<html lang="bn"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rana Online Mart - Daraz Style</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Roboto,Arial}
 body{background:#f5f5f5}
-.header{background:#f57224;padding:12px;position:sticky;top:0;z-index:99}
-.logo-row{display:flex;align-items:center;gap:10px}
-.logo-img{width:40px;height:40px;border-radius:50%;background:white;object-fit:cover;border:2px solid white}
-.logo{color:white;font-weight:bold;font-size:22px}
-.search{flex:1;background:white;border-radius:6px;padding:10px 12px;margin-top:8px}
-.search input{border:none;width:100%;outline:none;font-size:14px}
-.banner{background:#fff3e0;border:1px solid #ffe0b2;margin:8px;border-radius:8px;padding:10px;text-align:center;color:#d35400;font-weight:bold;font-size:13px;line-height:18px;white-space:normal}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:8px;min-height:300px}
-.card{background:white;border-radius:8px;overflow:hidden;box-shadow:0 2px 4px rgba(0,0,0,.1)}
-.card img{width:100%;height:160px;object-fit:cover;background:#eee}
+.top{background:#f57224;color:white;padding:8px 15px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100}
+.logo{font-size:22px;font-weight:bold}
+.menu{display:flex;gap:15px;align-items:center}
+.menu a{color:white;text-decoration:none;font-size:13px}
+.search-box{background:white;padding:10px 15px;display:flex;gap:10px}
+.search-box input{flex:1;border:none;outline:none;padding:8px;background:#f5f5f5;border-radius:4px}
+.search-box button{background:#f57224;color:white;border:none;padding:8px 20px;border-radius:4px;font-weight:bold}
+.cat-bar{background:white;padding:10px 15px;display:flex;gap:15px;overflow-x:auto;border-bottom:1px solid #eee;font-size:13px}
+.main{display:flex;max-width:1200px;margin:auto;gap:10px;padding:10px}
+.left{width:200px;background:white;border-radius:4px;padding:10px;display:none}
+@media(min-width:768px){.left{display:block}}
+.right{flex:1}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media(min-width:768px){.grid{grid-template-columns:1fr 1fr 1fr 1fr}}
+.card{background:white;border-radius:4px;overflow:hidden;cursor:pointer}
+.card:hover{box-shadow:0 2px 8px rgba(0,0,0,.2)}
+.card img{width:100%;height:180px;object-fit:cover}
 .info{padding:8px}
-.price{color:#f57224;font-weight:bold;font-size:16px}
-.btn{width:100%;background:#f57224;color:white;border:none;padding:10px;border-radius:6px;margin-top:6px;font-weight:bold}
-.owner{background:white;margin:8px;border-radius:8px;padding:12px;display:flex;gap:12px;align-items:center}
-.owner img{width:65px;height:65px;border-radius:50%;object-fit:cover;border:3px solid #f57224}
+.price{color:#f57224;font-weight:bold;font-size:18px}
+.old{font-size:12px;color:#999;text-decoration:line-through}
+.btn{width:100%;background:#f57224;color:white;border:none;padding:8px;border-radius:4px;margin-top:5px}
+.social{margin-top:15px;background:white;padding:10px;border-radius:4px}
+.social a{display:flex;align-items:center;gap:10px;padding:8px;text-decoration:none;color:#333;border-bottom:1px solid #f5f5f5}
+.modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.6);display:none;justify-content:center;align-items:center;z-index:200}
+.modal-box{background:white;width:90%;max-width:350px;padding:20px;border-radius:8px}
+.modal-box input{width:100%;padding:12px;margin-top:10px;border:1px solid #ddd;border-radius:4px}
 </style></head><body>
-<div class="header">
-<div class="logo-row">
-<img class="logo-img" src="rana.jpg" onerror="this.src='https://i.postimg.cc/8s2k7TgG/user.png'">
-<div class="logo">Rana Online Mart</div>
-</div>
-<div style="color:white;font-size:12px;margin-top:4px">📍 Madaripur • Trusted Seller • 01842560717</div>
-<div class="search"><input placeholder="খুঁজুন... 🔍"></div>
-</div>
 
-<div class="banner">🚚 বাংলাদেশে ডেলিভারি চার্জ ১৫০৳ |<br> </div>
-
-<div class="owner">
-<img src="rana.jpg" onerror="this.src='https://i.postimg.cc/8s2k7TgG/user.png'">
-<div>
-<div style="font-weight:bold;font-size:14px">আমি - মাদারীপুরের ছেলে রানা</div>
-<div style="font-size:12px;margin-top:4px;color:#666">✅ বিশ্বস্ত • ✅ সঠিক পণ্য • ✅ দ্রুত ডেলিভারি</div>
-<div style="font-size:11px;color:#f57224;margin-top:4px"></div>
+<div class="top">
+<div class="logo"><i class="fa fa-shopping-bag"></i> Rana Mart</div>
+<div class="menu">
+<a href="#" id="userName"><i class="fa fa-user"></i> লগইন</a>
+<a href="#" onclick="showCart()"><i class="fa fa-shopping-cart"></i> <span id="cartCount">0</span></a>
 </div>
 </div>
 
+<div class="search-box">
+<input id="search" placeholder="Madaripur এ সার্চ করুন...">
+<button onclick="searchProd()"><i class="fa fa-search"></i></button>
+</div>
+
+<div class="cat-bar">
+<span>🔥 সব পণ্য</span><span>👜 ব্যাগ</span><span>🍯 মধু</span><span>👕 পোশাক</span><span>🎁 গিফট</span>
+</div>
+
+<div class="main">
+<div class="left">
+<h4 style="margin-bottom:10px">আমাদের সাথে যুক্ত থাকুন</h4>
+<div class="social">
+<a href="https://facebook.com" target="_blank" style="color:#1877f2"><i class="fab fa-facebook fa-lg"></i> Facebook Page</a>
+<a href="https://youtube.com" target="_blank" style="color:red"><i class="fab fa-youtube fa-lg"></i> YouTube Channel</a>
+<a href="https://wa.me/8801842560717" target="_blank" style="color:green"><i class="fab fa-whatsapp fa-lg"></i> WhatsApp: 01842560717</a>
+<a href="mailto:khanonlineb@gmail.com"><i class="fa fa-envelope" style="color:#f57224"></i> khanonlineb@gmail.com</a>
+<div style="margin-top:10px;padding:10px;background:#fff3e0;border-radius:4px;font-size:12px">
+📍 Madaripur<br>🚚 ডেলিভারি: ১০০৳<br>✅ ১০০০৳+ ফ্রি ডেলিভারি
+</div>
+</div>
+</div>
+
+<div class="right">
+<div id="banner" style="background:linear-gradient(90deg,#f57224,#ff9a56);color:white;padding:15px;border-radius:4px;margin-bottom:10px;text-align:center">
+<h3>🎉 মাদারীপুরের সবচেয়ে বড় অনলাইন শপ!</h3>
+<p style="font-size:12px;margin-top:5px">একাউন্ট খুলুন আর অর্ডার করুন</p>
+</div>
 <div class="grid" id="products"></div>
+</div>
+</div>
+
+<!-- Login Modal -->
+<div class="modal" id="loginModal">
+<div class="modal-box">
+<h3 style="text-align:center;color:#f57224">একাউন্ট খুলুন / লগইন</h3>
+<p style="font-size:12px;text-align:center;color:#666;margin-top:5px">অর্ডার করতে একাউন্ট লাগবে</p>
+<input id="lName" placeholder="আপনার নাম">
+<input id="lPhone" placeholder="মোবাইল নাম্বার (01xxxxxxxxx)">
+<input id="lPass" type="password" placeholder="পাসওয়ার্ড">
+<button onclick="doLogin()" style="width:100%;background:#f57224;color:white;border:none;padding:12px;border-radius:4px;margin-top:10px;font-weight:bold">লগইন / একাউন্ট খুলুন</button>
+<button onclick="hideLogin()" style="width:100%;background:#eee;border:none;padding:10px;border-radius:4px;margin-top:8px">বন্ধ করুন</button>
+</div>
+</div>
 
 <script>
-// FIX: যদি localStorage খালি থাকে তাহলে ডিফল্ট প্রোডাক্ট দেখাবে
-let saved = localStorage.getItem('rana_products');
-let products;
-if(!saved || JSON.parse(saved).length===0){
-products=[
-{n:'পাটের টোট ব্যাগ - হাতে তৈরি',p:850,img:'https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=400'},
-{n:'সুন্দরবনের খাঁটি মধু 500g',p:600,img:'https://images.unsplash.com/photo-1587049352851-8d4e89133924?w=400'},
-{n:'নকশী কাঁথা -',p:2500,img:'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=400'},
-{n:'হস্তশিল্পের ঝুড়ি',p:450,img:'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=400'}
-];
-localStorage.setItem('rana_products', JSON.stringify(products));
-} else {
-products = JSON.parse(saved);
-}
-
-let grid=document.getElementById('products');
-function render(){
-grid.innerHTML='';
-products.forEach(pr=>{
-grid.innerHTML+=`<div class="card"><img src="${pr.img}"><div class="info"><div style="font-size:13px;height:32px;overflow:hidden">${pr.n}</div><div class="price">৳${pr.p}</div><button class="btn" onclick="order('${pr.n}')">এখনই কিনুন</button></div></div>`;
-});
-}
-function order(name){window.open(`https://wa.me/8801842560717?text=${encodeURIComponent('ভাই '+name+' নিতে চাই Madaripur এ - khanonlineb@gmail.com')}`);}
-render();
-</script></body></html>
+let products=[
+{n:'পাটের টোট ব্যাগ - হাতে তৈরি',p:850,op:1200,img:'https://images.unsplash
