@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="bn"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Rana online Mart</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"><style>*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}body{background:#f5f5f5}.top{background:#f57224;color:white;padding:12px;display:flex;justify-content:space-between;position:sticky;top:0;z-index:10}.search{background:white;padding:10px;display:flex;gap:8px}.search input{flex:1;background:#f1f1f1;border:none;padding:10px;border-radius:4px}.search button{background:#f57224;color:white;border:none;padding:0 18px;border-radius:4px}.cats{background:white;padding:10px;display:flex;gap:12px;overflow:auto;font-size:13px;border-bottom:1px solid #eee}.banner{background:#f57224;color:white;margin:10px;padding:15px;border-radius:8px;text-align:center}.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px}@media(min-width:600px){.grid{grid-template-columns:1fr 1fr 1fr 1fr}}.card{background:white;border-radius:8px;overflow:hidden}.card img{width:100%;height:150px;object-fit:cover}.info{padding:8px}.price{color:#f57224;font-weight:bold}.btn{width:100%;background:#f57224;color:white;border:none;padding:8px;border-radius:4px;margin-top:5px}</style></head><body>
-<div class="top"><div style="font-weight:bold;font-size:20px"><i class="fa fa-shopping-bag"></i> Rana online Mart</div><div><span onclick="login()"><i class="fa fa-user"></i> লগইন</span> <span style="margin-left:10px"><i class="fa fa-shopping-cart"></i> <span id="cc">0</span></span></div></div>
-<div class="search"><input id="s" placeholder=" সার্চ করুন..."><button onclick="search()"><i class="fa fa-search"></i></button></div>
-<div class="cats"><span>🔥 সব পণ্য</span><span>👜 ব্যাগ</span><span>🍯 মধু</span><span>👕 পোশাক</span><span>🎁 গিফট</span></div>
-<div class="banner"><h3>🎉 বাংলাদেশে বড় অনলাইন শপ!</h3><small>একাউন্ট খুলুন আর অর্ডার করুন - <a href="admin.html" style="color:white">Admin</a></small></div>
+<html lang="bn"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Rana Online Mart</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"><style>*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}body{background:#f5f5f5}.top{background:#f57224;color:white;padding:12px;display:flex;justify-content:space-between;position:sticky;top:0;z-index:10}.search{background:white;padding:10px;display:flex;gap:8px}.search input{flex:1;background:#f1f1f1;border:none;padding:10px;border-radius:4px;outline:none}.search button{background:#f57224;color:white;border:none;padding:0 18px;border-radius:4px}.cats{background:white;padding:10px;display:flex;gap:12px;overflow:auto;font-size:13px;border-bottom:1px solid #eee;white-space:nowrap}.banner{background:linear-gradient(90deg,#f57224,#ff8c42);color:white;margin:10px;padding:15px;border-radius:8px;text-align:center}.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px}@media(min-width:600px){.grid{grid-template-columns:1fr 1fr 1fr 1fr}}.card{background:white;border-radius:8px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.1)}.card img{width:100%;height:150px;object-fit:cover}.info{padding:8px}.price{color:#f57224;font-weight:bold;font-size:16px}.btn{width:100%;background:#f57224;color:white;border:none;padding:8px;border-radius:4px;margin-top:5px;font-weight:bold}</style></head><body>
+<div class="top"><div style="font-weight:bold;font-size:20px"><i class="fa fa-shopping-bag"></i> Rana Online Mart</div><div><span onclick="handleLogin()"><i class="fa fa-user"></i> <span id="uname">লগইন</span></span> <span style="margin-left:10px"><i class="fa fa-shopping-cart"></i> <span id="cc">0</span></span></div></div>
+<div class="search"><input id="s" placeholder="Madaripur এ সার্চ করুন..."><button onclick="doSearch()"><i class="fa fa-search"></i></button></div>
+<div class="cats"><span onclick="render(all)">🔥 সব পণ্য</span><span>👜 ব্যাগ</span><span>🍯 মধু</span><span>👕 পোশাক</span><span>🎁 গিফট</span></div>
+<div class="banner"><h3>🎉 বাংলাদেশের বড় অনলাইন শপ!</h3><small>একাউন্ট খুলুন আর অর্ডার করুন - <a href="admin.html" style="color:white;text-decoration:underline">Admin Panel</a></small></div>
 <div class="grid" id="g"></div>
-<div style="background:white;margin:10px;padding:12px;border-radius:8px">
+<div style="background:white;margin:10px;padding:15px;border-radius:8px">
 <h4>Follow Us</h4>
-<a href="https://facebook.com" target="_blank" style="display:block;padding:8px 0;text-decoration:none;color:#1877f2"><i class="fab fa-facebook"></i> Facebook Page</a>
-<a href="https://youtube.com" target="_blank" style="display:block;padding:8px 0;text-decoration:none;color:red"><i class="fab fa-youtube"></i> YouTube Channel</a>
-<a href="https://wa.me/8801842560717" style="display:block;padding:8px 0;text-decoration:none;color:green"><i class="fab fa-whatsapp"></i> 01842560717</a>
-<p style="font-size:12px;color:#666;margin-top:8px">Email: khanonlineb@gmail.com | Madaripur</p>
+<a href="https://facebook.com" target="_blank" style="display:block;padding:10px 0;text-decoration:none;color:#1877f2;border-bottom:1px solid #eee"><i class="fab fa-facebook"></i> Facebook Page</a>
+<a href="https://youtube.com" target="_blank" style="display:block;padding:10px 0;text-decoration:none;color:red;border-bottom:1px solid #eee"><i class="fab fa-youtube"></i> YouTube Channel</a>
+<a href="https://wa.me/8801842560717" style="display:block;padding:10px 0;text-decoration:none;color:green"><i class="fab fa-whatsapp"></i> WhatsApp: 01842560717</a>
+<p style="font-size:12px;color:#666;margin-top:10px">📧 khanonlineb@gmail.com | 📍 Madaripur | 🚚 ডেলিভারি ১০০৳ (১০০০৳+ ফ্রি)</p>
 </div>
 <script>
-let products=[
+let defaultProducts=[
 {n:"পাটের ব্যাগ - হাতে তৈরি",p:850,img:"https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=400"},
 {n:"খাঁটি মধু 500g",p:650,img:"https://images.unsplash.com/photo-1587049352851-8d4e89133924?w=400"},
 {n:"নকশী কাঁথা",p:1200,img:"https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=400"},
@@ -22,9 +22,11 @@ let products=[
 {n:"হস্তশিল্প ঝুড়ি",p:450,img:"https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=400"}
 ];
 let custom=JSON.parse(localStorage.getItem("rana_products")||"[]");
-let all=custom.concat(products);
-function render(list){let g=document.getElementById("g");g.innerHTML="";list.forEach((pr,i)=>{g.innerHTML+=`<div class="card"><img src="${pr.img}"><div class="info"><div style="font-size:13px;height:34px;overflow:hidden">${pr.n}</div><div class="price">৳${pr.p}</div><button class="btn" onclick="order(${i})">এখনই কিনুন</button></div></div>`});}
-function order(i){let u=localStorage.getItem("rana_user");if(!u){let name=prompt("অর্ডার করতে আপনার নাম লিখুন:");let phone=prompt("মোবাইল নাম্বার:");if(!name||!phone)return;localStorage.setItem("rana_user",JSON.stringify({name,phone}));alert("একাউন্ট খোলা হলো ভাই! এখন অর্ডার করুন");}let pr=all[i];alert(pr.n+" অর্ডার হয়েছে! WhatsApp করুন 01842560717");window.open("https://wa.me/8801842560717?text=ভাই "+pr.n+" অর্ডার করতে চাই ৳"+pr.p,"_blank");}
-function search(){let q=document.getElementById("s").value.toLowerCase();let f=all.filter(x=>x.n.toLowerCase().includes(q));render(f);}
+let all=custom.concat(defaultProducts);
+let cart=JSON.parse(localStorage.getItem("cart")||"[]");
+function render(list){let g=document.getElementById("g");g.innerHTML="";list.forEach((pr)=>{g.innerHTML+=`<div class="card"><img src="${pr.img}" onerror="this.src='https://via.placeholder.com/300'"><div class="info"><div style="font-size:13px;height:34px;overflow:hidden">${pr.n}</div><div class="price">৳${pr.p}</div><button class="btn" onclick="orderProduct('${pr.n}',${pr.p})">এখনই কিনুন</button></div></div>`});document.getElementById("cc").innerText=cart.length;let u=JSON.parse(localStorage.getItem("rana_user")||"null");if(u)document.getElementById("uname").innerText=u.name;}
+function orderProduct(name,price){let u=localStorage.getItem("rana_user");if(!u){let nm=prompt("অর্ডার করতে আপনার নাম লিখুন:");let ph=prompt("মোবাইল নাম্বার লিখুন:");if(!nm||!ph)return;localStorage.setItem("rana_user",JSON.stringify({name:nm,phone:ph}));alert("একাউন্ট খোলা হলো ভাই! ✅");render(all);}cart.push({n:name,p:price});localStorage.setItem("cart",JSON.stringify(cart));alert(name+" কার্টে যোগ হয়েছে!");window.open("https://wa.me/8801842560717?text=আসসালামু আলাইকুম ভাই, আমি "+name+" অর্ডার করতে চাই। দাম ৳"+price,"_blank");render(all);}
+function handleLogin(){let u=JSON.parse(localStorage.getItem("rana_user")||"null");if(u){alert("আপনি লগইন আছেন: "+u.name+" ("+u.phone+")");}else{let nm=prompt("আপনার নাম:");let ph=prompt("মোবাইল:");if(nm&&ph){localStorage.setItem("rana_user",JSON.stringify({name:nm,phone:ph}));alert("একাউন্ট খোলা হলো!");render(all);}}}
+function doSearch(){let q=document.getElementById("s").value.toLowerCase();let f=all.filter(x=>x.n.toLowerCase().includes(q));render(f);}
 render(all);
 </script></body></html>
