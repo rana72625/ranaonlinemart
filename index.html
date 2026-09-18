@@ -1,29 +1,10 @@
-<!DOCTYPE html><html lang="bn"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Rana Online Mart - Daraz Style</title><style>
-body{margin:0;background:linear-gradient(180deg,#fff6f1,#ffffff);font-family:Arial}
-.header{background:linear-gradient(90deg,#f57224,#ff8c3f);padding:10px 14px;color:white;position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 10px rgba(245,114,36,.4)}
-.header .left{display:flex;align-items:center;gap:8px}
-.header .left img{width:36px;height:36px;border-radius:8px;background:white;padding:2px}
-.header b{font-size:17px;line-height:1.1}
-.admin-link{background:white;color:#f57224;padding:6px 12px;border-radius:20px;font-size:11px;text-decoration:none;font-weight:bold;box-shadow:0 1px 4px rgba(0,0,0,.15)}
-.wrap{max-width:600px;margin:auto;padding:12px}
-.card{background:linear-gradient(180deg,white,#fffaf6);border-radius:12px;padding:12px;margin-bottom:12px;display:flex;gap:12px;box-shadow:0 2px 10px rgba(0,0,0,.06);border:1px solid #ffe9d5}
-.card img{width:95px;height:95px;object-fit:cover;border-radius:10px}
-.price{color:#f57224;font-weight:bold;font-size:16px;margin-top:4px}
-.btn{width:100%;background:linear-gradient(90deg,#f57224,#ff7a33);color:white;border:none;padding:10px;border-radius:8px;margin-top:8px;font-weight:bold;box-shadow:0 2px 6px rgba(245,114,36,.3)}
-.footer{background:white;margin-top:16px;padding:18px;border-radius:12px;text-align:center;font-size:13px;color:#555;box-shadow:0 2px 10px rgba(0,0,0,.05);border:1px solid #ffe9d5}
-.modal{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;justify-content:center;align-items:center;z-index:20}
-.modal-box{background:white;width:92%;max-width:400px;padding:20px;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.2)}
-.modal-box input{width:100%;padding:12px;margin-top:9px;border:1px solid #ffccb0;border-radius:8px;box-sizing:border-box;background:#fff8f3}
-</style></head><body>
-<div class="header">
-  <div class="left"><img src="logo.png" onerror="this.style.display='none'"><b>🛒 Rana<br><span style="font-size:11px;font-weight:normal;opacity:.9">Online Mart</span></b></div>
-  <a class="admin-link" href="admin.html">Admin</a>
+<!DOCTYPE html><html lang="bn"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Rana Online Mart</title><style>body{margin:0;background:#fff6f1;font-family:Arial}.header{background:#f57224;padding:12px;display:flex;justify-content:space-between;align-items:center;color:white;position:sticky;top:0}.wrap{max-width:600px;margin:auto;padding:10px}.card{background:white;border-radius:12px;padding:10px;margin-bottom:12px;display:flex;gap:12px;box-shadow:0 2px 8px rgba(0,0,0,.08)}.card img{width:100px;height:100px;border-radius:8px;object-fit:cover}.price{color:#f57224;font-weight:bold;font-size:18px}.btn{background:#f57224;color:white;border:none;padding:10px;width:100%;border-radius:8px;margin-top:8px;font-weight:bold}.footer{background:white;padding:15px;text-align:center;font-size:13px;border-radius:10px;margin-top:10px}</style></head><body>
+<div class="header"><div style="display:flex;align-items:center;gap:8px"><img src="logo.png" style="width:32px;height:32px;border-radius:6px;background:white" onerror="this.style.display='none'"><b>Rana Online Mart</b></div><a href="admin.html" style="background:white;color:#f57224;padding:6px 12px;border-radius:20px;text-decoration:none;font-size:12px;font-weight:bold">Admin</a></div>
+<div class="wrap">
+<div class="card"><img src="https://via.placeholder.com/100x100/f57224/ffffff?text=T-Shirt"><div style="flex:1"><b>প্রিমিয়াম টি-শার্ট</b><div class="price">৳ 550</div><button class="btn" onclick="alert('অর্ডার সিস্টেম: নাম, মোবাইল, জিমেইল লাগবে - এডমিনে দেখা যাবে')">অর্ডার করুন</button></div></div>
+<div class="card"><img src="https://via.placeholder.com/100x100/333/fff?text=Jeans"><div style="flex:1"><b>জিন্স প্যান্ট</b><div class="price">৳ 1200</div><button class="btn" onclick="alert('অর্ডার সিস্টেম চালু আছে')">অর্ডার করুন</button></div></div>
+<div class="card"><img src="https://via.placeholder.com/100x100/007bff/fff?text=Watch"><div style="flex:1"><b>স্মার্ট ওয়াচ</b><div class="price">৳ 899</div><button class="btn" onclick="alert('অর্ডার সিস্টেম চালু আছে')">অর্ডার করুন</button></div></div>
+<div class="card"><img src="https://via.placeholder.com/100x100/28a745/fff?text=Bag"><div style="flex:1"><b>স্কুল ব্যাগ</b><div class="price">৳ 750</div><button class="btn" onclick="alert('অর্ডার সিস্টেম চালু আছে')">অর্ডার করুন</button></div></div>
+<div class="footer"><b>যোগাযোগ</b><br>📞 01XXXXXXXXX<br>📧 rana@gmail.com<br>🔵 Facebook: Rana Online Mart<br>🔴 YouTube: Rana Online Mart<br><br>© Rana Online Mart - Daraz Style</div>
 </div>
-<div class="wrap"><div id="list"></div><div class="footer"><b style="color:#f57224">📞 যোগাযোগ</b><br><br>📞 01XXXXXXXXX<br>📧 rana@gmail.com<br>🔵 fb.com/ranaonlinemart<br>🔴 youtube.com/@ranaonlinemart<br><br>© Rana Online Mart</div></div>
-<div id="orderModal" class="modal"><div class="modal-box"><h3 style="margin:0;color:#f57224">📝 অর্ডার করুন</h3><p id="pname" style="font-size:13px;color:#f57224;font-weight:bold"></p><input id="cname" placeholder="আপনার নাম *"><input id="cphone" placeholder="মোবাইল নাম্বার *"><input id="cemail" placeholder="জিমেইল *"><input id="caddr" placeholder="ঠিকানা"><button onclick="confirmOrder()" class="btn" style="margin-top:14px;padding:12px">✅ অর্ডার কনফার্ম করুন</button><button onclick="document.getElementById('orderModal').style.display='none'" style="width:100%;margin-top:10px;padding:10px;background:#f5f5f5;border:none;border-radius:8px">বাতিল</button></div></div>
-<script>
-let defaultPros=[{n:"প্রিমিয়াম টি-শার্ট",p:550,img:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400"},{n:"জিন্স প্যান্ট",p:1200,img:"https://images.unsplash.com/photo-1542272604-787c3835535d?w=400"}];
-let localPros=JSON.parse(localStorage.getItem('rana_products')||'[]');
-let all=[...localPros,...defaultPros];
-let cur=null;
-function render(){let h='';all.forEach((x,i)=>{h+=`<div class="card"><img src="${x.img}"><div style="flex:1"><b>${x.n}</b><div class="price">৳ ${x.p}</div><button class="btn" onclick="openOrder(${i})">এখনই অর্ডার করুন</button></div></div>`});document.getElement
+</body></html>
